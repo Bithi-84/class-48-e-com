@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
-// });
+// })
 
-Route::get('/',[HomeController::class,'index']);
-Route::get('/contact-us',[HomeController::class,'contact']);
+
+Route::get('/',[FrontendController::class,'index']);
