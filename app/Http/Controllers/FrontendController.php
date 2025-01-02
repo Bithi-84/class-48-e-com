@@ -16,6 +16,11 @@ public function productDetails(){
 
 }
 
+public function typeProduct(){
+    return view ('type-products');
+
+}
+
 public function shop(){
 
     return view('shop');

@@ -3,7 +3,7 @@
 <header class="header-section">
     <div class="container">
         <div class="header-top-wrapper">
-            <a href="{{url('/')}}" class="brand-logo-outer">
+            <a href="{{route('base')}}" class="brand-logo-outer">
                 <img src="{{asset('/assets/images/logo.png')}}" alt="Logo">
             </a>
             <div class="search-form-outer">
@@ -95,12 +95,12 @@
                 <div class="header__dynamic-page-wrapper">
                     <ul class="dynamic-page-list">
                         <li class="dynamic-page-list-item">
-                            <a href="{{url('/')}}" class="dynamic-page-list-item-link">
+                            <a href="{{route('base')}}" class="dynamic-page-list-item-link">
                                 Home
                             </a>
                         </li>
                         <li class="dynamic-page-list-item">
-                            <a href="{{url('/shop')}}" class="dynamic-page-list-item-link">
+                            <a href="{{route('shop')}}" class="dynamic-page-list-item-link">
                                 Shop
                             </a>
                         </li>
