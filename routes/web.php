@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +29,10 @@ Route::get('/payment-policy',[FrontendController::class,'paymentPolicy']);
 Route::get('/about-us',[FrontendController::class,'aboutUs']);
 Route::get('/contact-us',[FrontendController::class,'contactUs']);
 
+//Admin/login...
+Route::get('/admin/login',[AdminController::class,'AdminLogin']);
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin/dashboard',[DashboardController::class,'adminDashboard']);
