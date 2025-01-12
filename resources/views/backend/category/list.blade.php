@@ -44,18 +44,21 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Test Name</td>
-                    <td>
-                        <img src="">
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-primary" >Edit</a>
-                        <a href="#" class="btn btn-danger" >Delete</a>
-                    </td>
-                    
-                  </tr>
+            @foreach ( $categories as $category )
+            <tr>
+              <td>{{$loop->index+1}}</td>
+              <td>{{$category->name}}</td>
+              <td>
+                  <img src="{{$category->image}}">
+              </td>
+              <td>
+                  <a href="#" class="btn btn-primary" >Edit</a>
+                  <a href="#" class="btn btn-danger" >Delete</a>
+              </td>
+              
+            </tr>
+              
+            @endforeach
                   
                   </tbody>
                   
