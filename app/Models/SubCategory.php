@@ -6,14 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class SubCartegory extends Model
+class SubCategory extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
-    public function category()
-
+    public function category ()
     {
-        return $this->belongsTo(category::class,'cat_id','id');
+        return $this->belongsTo(Category::class, 'cat_id','id');
     }
 }
