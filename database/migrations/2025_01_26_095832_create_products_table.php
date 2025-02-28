@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->unsignedBigInteger('cat-id');
+            $table->unsignedBigInteger('cat_id');
             $table->unsignedBigInteger('sub_cat_id')->nullable();
             $table->double('regular_price');
             $table->double('discount_price')->nullable();
