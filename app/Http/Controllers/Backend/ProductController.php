@@ -90,7 +90,7 @@ class ProductController extends Controller
 
                 $galleryImage->product_id = $product->id;
 
-                $imageName = rand().'-galleryImage-'.'.'. $image->extension();
+                $imageName = rand().'-galleryimage-'.'.'. $image->extension();
             $image->move('backend/images/galleryImage',$imageName);
             
             $galleryImage->image = $imageName;
@@ -102,7 +102,12 @@ class ProductController extends Controller
        
 
         return redirect()->back();
+     }
 
+   public function productList()
+   {  
 
-    }
+      $products = Product :: orderBy('id','desc')->with('category','subCategory')->get();
+       return view ('backend.product.list',compact('products'));
+   }
 }
