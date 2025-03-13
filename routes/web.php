@@ -64,4 +64,11 @@ Route::post('/admin/sub-category/update/{id}',[SubCategoryController::class,'sub
 Route:: get ('/admin/product/list',[ProductController::class,'productList']);
 Route::get ('/admin/product/create',[ProductController::class,'productCreate']);
 Route::post ('/admin/product/store',[ProductController::class,'productStore']);
+Route::get ('/admin/product/edit/{id}',[ProductController::class,'productEdit']);
+Route::get ('/admin/product/delete/{id}',[ProductController::class,'productDelete']);
+Route::post ('/admin/product/update/{id}',[ProductController::class,'productUpdate']);
+
+
+
+
 

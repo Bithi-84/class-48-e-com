@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Color;
 use App\Models\GalleryImage;
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\Size;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
@@ -110,4 +111,73 @@ class ProductController extends Controller
       $products = Product :: orderBy('id','desc')->with('category','subCategory')->get();
        return view ('backend.product.list',compact('products'));
    }
+
+   public function productDelete($id)
+   {
+    $product = Product::find($id);
+     
+    $colors = Color::where('product_id', $product->id)->get();
+
+     $sizes = Size::where ('product_id',$product->id)->get();
+    $galleryImages = GalleryImage::where('product_id', $product->id)->get();
+    $reviews = Review::where('product_id',$product->id)->get();
+     
+    if($product->image && file_exists('backend/images/product'.$product->image)){
+        unlink('backend/images/product'.$product->image);
+       }
+
+       $product->delete();
+
+    //    ...color delete
+       
+       if($colors->isNotEmpty()){
+        foreach($colors as $color){
+            $color->delete();
+        }
+       }
+      
+    //    ...sizes delete
+       if($sizes->isNotEmpty()){
+        foreach($sizes as $size){
+            $size->delete();
+        }
+       }
+
+    //    ...galleryImage delete
+
+       if($galleryImages->isNotEmpty()){
+        foreach($galleryImages as $image){
+         
+            if($product->image && file_exists('backend/images/galleryImage'.$image->image)){
+                unlink('backend/images/galleryImage'.$image->image);
+               }
+
+            $image->delete();
+        }
+       }
+    
+    //   .....reviews delete...
+
+       if($reviews->isNotEmpty()){
+        foreach($reviews as $review){
+            $review->delete();
+        }
+       }
+       
+       return redirect()->back();
+
+   }
+
+       public function productEdit($id)
+
+       {
+        $product = product::where('id',$id)->with('color','size','galleryImage')->first();
+
+        $categories = Category::get();
+        $subCategories = SubCategory::get();
+
+        return view('backend.product.edit',compact('product','categories','subCategories'));
+       }
+
+
 }

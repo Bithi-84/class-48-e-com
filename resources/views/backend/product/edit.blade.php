@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Create Product</h1>
+                        <h1>Edit Product</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Create Producty</li>
+                            <li class="breadcrumb-item active">Edit Producty</li>
                         </ol>
                     </div>
                 </div>
@@ -28,20 +28,20 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Add New Product</h3>
+                                <h3 class="card-title">Edit Product</h3>
                             </div>
 
-                            <form action="{{url('/admin/product/store')}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{url('/admin/product/update/'.$product->id)}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="name">Product Name*</label>
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Product Name*" required>
+                                        <input type="text" class="form-control" value="{{$product->name}}" name="name" id="name" placeholder="Enter Product Name*" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="name">Product Code</label>
-                                        <input type="text" class="form-control" name="sku_code" id="sku_code" placeholder="Enter Product Code" >
+                                        <input type="text" class="form-control" value="{{$product->sku_code}}" name="sku_code" id="sku_code" placeholder="Enter Product Code" >
                                     </div>
 
                                     <div class="form-group">
@@ -74,7 +74,7 @@
 
                                     <div class="form-group">
                                         <label for="name">Product Quantity</label>
-                                        <input type="number" class="form-control" name="qty" id="qty" placeholder="Enter Product Quantity" required>
+                                        <input type="number" class="form-control" value="{{$product->qty}}" name="qty" id="qty" placeholder="Enter Product Quantity" required>
                                     </div>
 
                                     <div class="form-group" id="color_fields">
@@ -93,27 +93,27 @@
                                       
                                     <div class="form-group">
                                         <label for="name">Product Buying Price*</label>
-                                        <input type="number" class="form-control" name="buying_price" id="buying_price" placeholder="Enter  Buying Price" required>
+                                        <input type="number" class="form-control" value="{{$product->buying_price}}" name="buying_price" id="buying_price" placeholder="Enter  Buying Price" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="name">Product Regular Price*</label>
-                                        <input type="number" class="form-control" name="regular_price" id="regular_price" placeholder="Enter Regular Price" required>
+                                        <input type="number" class="form-control" value="{{$product->regular_price}}" name="regular_price" id="regular_price" placeholder="Enter Regular Price" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="name">Product Discount Price</label>
-                                        <input type="number" class="form-control" name="discount_price" id="discount_price" placeholder="Enter Discount Price">
+                                        <input type="number" class="form-control" value="{{$product->discount_price}}" name="discount_price" id="discount_price" placeholder="Enter Discount Price">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="name">Product Description*</label>
-                                        <textarea id="summernote" name="description" class="form-control" required></textarea>
+                                        <textarea id="summernote" name="description" class="form-control" required>"{{$product->description}}"</textarea>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="name">Product Policy*</label>
-                                        <textarea id="summernote2" name="policy" class="form-control" required></textarea>
+                                        <textarea id="summernote2" name="policy" class="form-control" required>"{{$product->policy}}"</textarea>
                                     </div>
 
                                     <div class="form-group">
@@ -135,13 +135,14 @@
                                         <label for="exampleInputFile">Product Image*</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="image" id="image" accept="image/*" required>
+                                                <input type="file" class="custom-file-input" name="image" id="image" accept="image/*">
                                                 <label class="custom-file-label" for="image">Choose file</label>
                                             </div>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">Upload</span>
                                             </div>
                                         </div>
+                                        <img src="{{asset('backend/images/product/'.$product->image)}}" height="100" width="100">
                                     </div>
                                   
                                     <div class="form-group">
