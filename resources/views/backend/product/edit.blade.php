@@ -169,7 +169,7 @@
                                         <label for="exampleInputFile">Gallery Image*</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                 <input type="file" class="custom-file-input" name="galleryImage[]" multiple id="galeryImage" accept="image/*" required>
+                                                 <input type="file" class="custom-file-input" name="galleryImage[]" multiple id="galeryImage" accept="image/*" >
                                                 <label class="custom-file-label" for="image">Choose file</label>
                                             </div>
                                             <div class="input-group-append">
