@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/',[FrontendController::class,'index'])->name('base');
-Route::get('/products-details',[FrontendController::class,'productDetails'])->name('products.details');
+Route::get('/products-details/{slug}',[FrontendController::class,'productDetails'])->name('products.details');
 Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
 Route::get('/return-process',[FrontendController::class,'returnProcess'])->name('return.process');
 Route::get('/category-products',[FrontendController::class,'categoryProducts'])->name('category.products');
