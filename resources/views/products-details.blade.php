@@ -41,7 +41,8 @@
                                         </span>
                                     </div>
 
-                                    <form action="" method="POST">
+                                    <form action="{{url('add-to-cart-details/'.$product->id)}}" method="POST">
+                                        @csrf
                                         <div class="product-details-select-items-wrap">
                                             @foreach ($product->color as $colorName)
                                                 <div class="product-details-select-item-outer">
@@ -69,9 +70,9 @@
                                                 <a title="Decrement" class="decrement-btn" style="margin-top: -10px;">
                                                     <i class="fas fa-minus"></i>
                                                 </a>
-                                                <input type="number" readonly name="qty" placeholder="Qty"
-                                                    value="1" min="1" id="qty" style="height: 35px">
-                                                <a title="Increment" class="increment-btn" style="margin-top: -10px;">
+                                                <input type="number" readonly name="qty" placeholder="Qty" value="1" min="1" id="qty" style="height: 35px">
+                                                    
+                                                    <a title="Increment" class="increment-btn" style="margin-top: -10px;">
                                                     <i class="fas fa-plus"></i>
                                                 </a>
                                             </div>
@@ -133,7 +134,8 @@
                                         <div class="review-item-wrapper">
                                             <div class="review-item-left">
                                                 {{-- <i class="fas fa-user"></i> --}}
-                                                <img src= "{{ asset('backend/images/review/' . $data->image) }}" height="100" width="100">
+                                                <img src= "{{ asset('backend/images/review/' . $data->image) }}"
+                                                    height="100" width="100">
                                             </div>
                                             <div class="review-item-right">
                                                 <h4 class="review-author-name">
@@ -186,14 +188,14 @@
                             <h3 class="product-details-title">
                                 Category
                             </h3>
-                           @foreach ($categories as $category )
-                           <a href="{{url('/category-products')}}" class="category-item-outer">
-                            <img src="{{ asset('/backend/images/category/'.$category->image) }}" alt="category image">
-                            {{$category->name}}
-                        </a>
-                               
-                           @endforeach
-                            
+                            @foreach ($categories as $category)
+                                <a href="{{ url('/category-products') }}" class="category-item-outer">
+                                    <img src="{{ asset('/backend/images/category/' . $category->image) }}"
+                                        alt="category image">
+                                    {{ $category->name }}
+                                </a>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -201,3 +203,30 @@
         </div>
     </section>
 @endsection
+
+@push('script')
+    <script>
+        var qtyInput = document.getElementById('qty');
+
+        var plusBtn = document.querySelector('.increment-btn');
+        var minusBtn = document.querySelector('.decrement-btn');
+
+        plusBtn.addEventListener('click', function() {
+
+            if(parseInt(qtyInput.value) <5){
+                qtyInput.value = parseInt(qtyInput.value) + 1;
+            }
+              
+               
+                })
+
+        minusBtn.addEventListener('click', function() {
+
+            if(parseInt(qtyInput.value) >1){
+               
+                qtyInput.value = parseInt(qtyInput.value) - 1;
+            }
+            
+        })
+    </script>
+@endpush
