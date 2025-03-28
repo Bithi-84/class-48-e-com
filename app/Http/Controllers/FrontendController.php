@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -52,14 +53,18 @@ class FrontendController extends Controller
         return view('category-products');
     }
 
-    public function subcategoryProducts()
+    public function subCategoryProducts()
     {
-
-        return view('subcategory-products');
-    }
+    //    $subCategory =SubCategory::find($id);
+    //     $products = Product::where('sub_cat_id',$id)->get();
+    //     $productsCount = Product::where('sub_cat_id',$id)->count();
+    //     return view('subcategory-products',compact('products','productsCount','subCategory'));
+    return view('subcategory-products');
+     }
 
     public function viewCart()
     {
+      
 
         return view('view-cart');
     }
@@ -171,5 +176,13 @@ class FrontendController extends Controller
         elseif($request->action =="buyNow"){
             return redirect('/checkout');
         }
+    }
+
+    public function addToCartDelete($id)
+    {
+        $cart = Cart::find($id);
+
+        $cart ->delete();
+       return redirect()->back();
     }
 }
