@@ -18,11 +18,11 @@ Route::get('/',[FrontendController::class,'index'])->name('base');
 Route::get('/products-details/{slug}',[FrontendController::class,'productDetails'])->name('products.details');
 Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
 Route::get('/return-process',[FrontendController::class,'returnProcess'])->name('return.process');
-Route::get('/category-products',[FrontendController::class,'categoryProducts'])->name('category.products');
-Route::get('/subcategory-products',[FrontendController::class,'subcategoryProducts']);
+Route::get('/category-products/{id}',[FrontendController::class,'categoryProducts'])->name('category.products');
+Route::get('/subcategory-products/{id}',[FrontendController::class,'subcategoryProducts']);
 Route::get('/view-cart',[FrontendController::class,'viewCart']);
 Route::get('/checkout',[FrontendController::class,'checkOut']);
-Route::get('/type-products',[FrontendController::class,'typeProduct']);
+Route::get('/type-products/{type}',[FrontendController::class,'typeProduct']);
 // policy page....
 
 Route::get('/privacy-policy',[FrontendController::class,'privacyPolicy']);
