@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('address');
             $table->integer('area');
             $table->double('price');
-            $table->string('status')->defualt('pending');
+            $table->string('status')->default('pending');
             $table->string('courier_name')->nullable;
             $table->timestamps();
         });

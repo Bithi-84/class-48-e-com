@@ -5,6 +5,7 @@
     <section class="checkout-section">
         <div class="container">
             <form action="{{url('/confirm-order')}}" method="post" class="form-group billing-address-form" enctype="multipart/form-data">
+                @csrf
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="checkout-wrapper">
@@ -22,13 +23,13 @@
                                     </div>
                                     <div class="col-md-12 mt-3">
                                         <div style="background: lightgrey;padding: 10px;margin-bottom: 10px;">
-                                            <input type="radio" id="inside_dhaka" name="area" value="80" onclick="grandTotal()" checked/>
+                                            <input type="radio" id="inside_dhaka" name="area" value="80" onclick="grandTotalIn()" checked/>
                                             <label for="inside_dhaka"
                                                 style="font-size: 18px;font-weight: 600;color: #000;">Inside Dhaka (80
                                                 Tk.)</label>
                                         </div>
                                         <div style="background: lightgrey;padding: 10px;">
-                                            <input type="radio" id="outside_dhaka" name="area" value="150" onclick = "grandTotal()" />
+                                            <input type="radio" id="outside_dhaka" name="area" value="150" onclick = "grandTotalOut()" />
                                             <label for="outside_dhaka"
                                                 style="font-size: 18px;font-weight: 600;color: #000;">Outside Dhaka (150
                                                 Tk.)</label>
@@ -95,6 +96,7 @@
                             <div class="sub-total-item">
                                 <strong>Sub Total</strong>
                                 <strong id="subTotal">৳ {{$subTotal}}</strong>
+                                <input type ="hidden" value="{{$subTotal}}" id="subTotalHidden" name="subTotalHidden">
                             </div>
                             <div class="sub-total-item">
                                 <strong>Delivery charge</strong>
@@ -103,6 +105,7 @@
                             <div class="sub-total-item grand-total">
                                 <strong>Grand Total</strong>
                                 <strong id="grandTotal">৳ {{$subTotal+80}}</strong>
+                                <input type ="hidden" value="{{$subTotal+80}}" id="grandTotalHidden" name="grandTotalHidden">
                             </div>
                         </div>
                         <div class="payment-item-outer">
@@ -134,8 +137,26 @@
 
 @push('script')
     <script>
-        function grandTotal(){
-            
-        }
+       function grandTotalIn(){
+        var subTotal = parseFloat(document.getElementById('subTotalHidden').value);
+        var charge =   parseFloat(document.getElementById('inside_dhaka').value);
+
+        var grandTotal = subTotal + charge;
+        document.getElementById('grandTotal').innerHTML ='৳ ' + grandTotal;
+        document.getElementById('grandTotalHidden').value=  grandTotale;
+        document.getElementById('deliveryCharge').innerHTML= '৳ '+ charge;
+       }
+
+        function grandTotalOut(){
+          
+          var subTotal = parseFloat(document.getElementById('subTotalHidden').value);
+          var charge =   parseFloat(document.getElementById('outside_dhaka').value);
+
+          var grandTotal = subTotal + charge;
+          
+          document.getElementById('grandTotal').innerHTML= '৳ '+ grandTotal;
+          document.getElementById('grandTotalHidden').value=  grandTotal;
+          document.getElementById('deliveryCharge').innerHTML= '৳ '+ charge;
+      }
     </script>
 @endpush
