@@ -23,6 +23,7 @@ Route::get('/subcategory-products/{id}',[FrontendController::class,'subcategoryP
 Route::get('/view-cart',[FrontendController::class,'viewCart']);
 Route::get('/checkout',[FrontendController::class,'checkOut']);
 Route::get('/type-products/{type}',[FrontendController::class,'typeProduct']);
+Route::get('/search-products',[FrontendController::class,'searchProduct']);
 // policy page....
 
 Route::get('/privacy-policy',[FrontendController::class,'privacyPolicy']);

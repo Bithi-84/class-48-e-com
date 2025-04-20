@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('area');
             $table->double('price');
             $table->string('status')->default('pending');
-            $table->string('courier_name')->nullable;
+            $table->string('courier_name')->nullable();
             $table->timestamps();
         });
     }
