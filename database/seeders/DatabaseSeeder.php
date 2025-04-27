@@ -23,6 +23,6 @@ class DatabaseSeeder extends Seeder
 
         // $this -> call(SiteSettingSeeder::class);
         // $this -> call(PolicySeeder::class);
-        $this -> call(BannerSeeder::class);
+        // $this -> call(BannerSeeder::class);
     }
 }
