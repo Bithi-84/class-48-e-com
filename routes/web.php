@@ -89,6 +89,8 @@ Route::post ('/admin/product/update/{id}',[ProductController::class,'productUpda
 //orders.....
 
 Route:: get ('/admin/all-order/list',[OrderController::class,'allOrdertList']);
+Route:: get ('/admin/edit-order/{id}',[OrderController::class,'editOrder']);
+Route:: post ('/admin/update-order/{id}',[OrderController::class,'updateOrder']);
 
 
 
