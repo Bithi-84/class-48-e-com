@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
@@ -92,7 +93,11 @@ Route:: get ('/admin/all-order/list',[OrderController::class,'allOrdertList']);
 Route:: get ('/admin/edit-order/{id}',[OrderController::class,'editOrder']);
 Route:: post ('/admin/update-order/{id}',[OrderController::class,'updateOrder']);
 Route:: get ('/admin/update-order-status/{status}/{id}',[OrderController::class,'updateOrderStatus']);
+Route:: get ('/admin/status-wise-order/{status}',[OrderController::class,'statusWiseOrder']);
 
 
+// Settings
 
+Route:: get ('/admin/general-setting',[SettingController::class,'showSettings']);
+Route:: get ('/admin/general-setting/update',[SettingController::class,'updateSettings']);
 
