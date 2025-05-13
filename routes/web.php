@@ -99,5 +99,7 @@ Route:: get ('/admin/status-wise-order/{status}',[OrderController::class,'status
 // Settings
 
 Route:: get ('/admin/general-setting',[SettingController::class,'showSettings']);
-Route:: get ('/admin/general-setting/update',[SettingController::class,'updateSettings']);
-
+Route:: post ('/admin/general-setting/update',[SettingController::class,'updateSettings']);
+Route:: get('/admin/top-banners',[SettingController::class,'showBanners']);
+Route:: get ('/admin/top-banner-edit/{id}',[SettingController::class,'editBanner']);
+Route:: post ('/admin/top-banners/update/{id}',[SettingController::class,'updateBanners']);
