@@ -72,14 +72,14 @@
 
                                 <div class="form-group">
                                     <label for="inputDescription">Instagram Link(optinal)</label>
-                                    <input type="text" id="area" name= "instagram " class="form-control"
+                                    <input type="text" id="area" name= "instagram" class="form-control"
                                         value="{{$generalSettings->instagram}}">
 
                                 </div>
                                  
                              <div class="form-group">
                                 <label for="inputDescription">Youtube Link(optinal)</label>
-                                <input type="text" id="area" name= "Youtube" class="form-control"
+                                <input type="text" id="area" name= "youtube" class="form-control"
                                     value="{{$generalSettings->youtube}}">
 
                             </div>
